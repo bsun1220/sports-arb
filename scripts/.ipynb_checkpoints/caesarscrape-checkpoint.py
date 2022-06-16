@@ -1,9 +1,21 @@
 from selenium import webdriver
 from convertodds import *
+import time
 
 def get_data():
     driver = webdriver.Chrome("/Users/bennysun/Downloads/chromedriver")
-    driver.get("https://www.williamhill.com/us/nj/bet/basketball/events/all?id=5806c896-4eec-4de1-874f-afed93114b8c")
+    driver.get("https://www.williamhill.com/us/nj/bet/basketball/events/all")
+    
+    buttons = driver.find_elements_by_xpath('//div[@class="expanderHeader collapsed"]')
+    
+    value = 0;
+    length = 1000/(len(buttons) + 1)
+    for button in buttons:
+        button.click()
+        value += length
+        driver.execute_script("window.scrollTo(0," + str(value)+")") 
+        time.sleep(2)
+    
     events = driver.find_elements_by_xpath('//div[@class="eventList"]')
     
     event_list = []
@@ -15,9 +27,11 @@ def get_data():
 def clean_data(data):
     clean_list = []
     for event in data:
+        if(len(event) != 17):
+            continue
         df = {}
         df["match"] = event[0]
-        df["date"] = event[1].split(" |")[0]
+        df["date"] = event[1].split("| ")[1]
         df["team1"] = event[2]
         df["team2"] = event[3]
         df["spread"] = {}
