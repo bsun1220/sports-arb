@@ -37,10 +37,6 @@ def clean_data(data):
         
         df = {}
         df["match"] = event[0]
-        try:
-            df["date"] = event[1].split("| ")[1]
-        except:
-            df["date"] = event[1]
             
         df["team1"] = event[2]
         df["team2"] = event[3]

@@ -42,7 +42,6 @@ def transform_data(data):
         
         df = {}
         df["match"] = event[1].upper() + " AT " + event[8].upper()
-        df["date"] = event[0]
         df["team1"] = event[1]
         df["team2"] = event[8]
         
