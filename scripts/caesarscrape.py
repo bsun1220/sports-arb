@@ -32,33 +32,33 @@ def get_data():
 def clean_data(data):
     clean_list = []
     for event in data:
-        if(len(event) != 17):
-            continue
-        
-        df = {}
-        df["match"] = event[0]
-            
-        df["team1"] = event[2]
-        df["team2"] = event[3]
-        df["spread"] = {}
-        odds1 = american_to_dec(int(event[6]))
-        odds2 = american_to_dec(int(event[8]))
-        df["spread"][event[2]] = {"amount":float(event[5]), "odds":odds1}
-        df["spread"][event[3]] = {"amount":float(event[7]), "odds":odds2}
-        
-        df["moneyline"] = {}
-        odds1 = american_to_dec(int(event[10]))
-        odds2 = american_to_dec(int(event[11]))
-        df["moneyline"][event[2]] = {"odds":odds1}
-        df["moneyline"][event[3]] = {"odds":odds2}
-        
-        df["points"] = {}
-        odds1 = american_to_dec(int(event[14]))
-        odds2 = american_to_dec(int(event[16]))
-        df["points"][event[2]] = {"amount":event[13], "odds":odds1}
-        df["points"][event[3]] = {"amount":event[15], "odds":odds2}
-        
-        clean_list.append(df)
+        try:
+            df = {}
+            df["match"] = event[0]
+
+            df["team1"] = event[2]
+            df["team2"] = event[3]
+            df["spread"] = {}
+            odds1 = american_to_dec(int(event[6]))
+            odds2 = american_to_dec(int(event[8]))
+            df["spread"][event[2]] = {"amount":float(event[5]), "odds":odds1}
+            df["spread"][event[3]] = {"amount":float(event[7]), "odds":odds2}
+
+            df["moneyline"] = {}
+            odds1 = american_to_dec(int(event[10]))
+            odds2 = american_to_dec(int(event[11]))
+            df["moneyline"][event[2]] = {"odds":odds1}
+            df["moneyline"][event[3]] = {"odds":odds2}
+
+            df["points"] = {}
+            odds1 = american_to_dec(int(event[14]))
+            odds2 = american_to_dec(int(event[16]))
+            df["points"][event[2]] = {"amount":event[13], "odds":odds1}
+            df["points"][event[3]] = {"amount":event[15], "odds":odds2}
+
+            clean_list.append(df)
+        except:
+            pass
     
     return clean_list
 

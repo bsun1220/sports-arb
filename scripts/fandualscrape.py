@@ -12,6 +12,17 @@ def get_data():
     for event in events:
         event_list.append(event.text.split("\n"))
     
+    driver.get("https://sportsbook.fanduel.com/basketball?tab=live-now")
+    events = driver.find_elements_by_xpath('//div[@class = "t ab v w x ic h bk id ai"]')
+    for event in events:
+        text = event.text.split("\n")
+        if(len(text) == 14):
+            del text[3]
+            del text[1]
+        event_list.append(text)
+    
+    events = driver.find_elements_by_xpath('//div[@class = "t ab v w x ic h bk id ai"]')
+    
     return event_list
 
 def transform_data(data):

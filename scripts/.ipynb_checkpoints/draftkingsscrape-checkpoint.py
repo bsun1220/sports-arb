@@ -25,11 +25,10 @@ def get_data():
     
     for event in events:
         lst = event.text.split("\n")
-        if (len(lst) % 15 != 0):
-            continue
-        
-        for i in range(0, len(lst), 15):
-            event_list.append(lst[i:i+15])
+        if (len(lst) == 17):
+            del lst[2]
+            del lst[10]
+        event_list.append(lst)
     
     return event_list
 

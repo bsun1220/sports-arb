@@ -1,0 +1,24 @@
+
+
+.card{
+    margin-top:20px;
+    margin-bottom:20px;
+    border-style:solid;
+    height:fit-content;
+    width:35rem;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    align-items:center;
+}
+
+.card h1{
+    text-align:center;
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+#title{
+    background-color:yellow;
+}

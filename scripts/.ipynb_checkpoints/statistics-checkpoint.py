@@ -1,8 +1,4 @@
-
-
-def stat(data):
-    
-    
+def stat(data): 
     for event in data:
         print(event["match"])
         
@@ -25,6 +21,11 @@ def stat(data):
             print("arbitrage found:")
             print(event["team1"] + " at " + event["moneyline"][event["team1"]]["src"])
             print(event["team2"] + " at " + event["moneyline"][event["team2"]]["src"])
+            overall_stake = 1000
+            stake1 = (1000 * 1/money1odds)/(1/money1odds + 1/money2odds)
+            stake2 = (1000 * 1/money2odds)/(1/money1odds + 1/money2odds)
+            print("With an overall stake of " + str(overall_stake) + ", you must invest " + str(stake1) + ", " + str(stake2) + " respectively")
+            
         else:
             print("total market opportunity is " + str(1/money1odds + 1/money2odds))
         
@@ -36,6 +37,6 @@ def stat(data):
             print(event["points"][0]["amount"] + " at " + event["points"][0]["src"])
             print(event["points"][1]["amount"] + " at " + event["points"][1]["src"])
         else:
-            print("total market opportunity is " + str(1/point1odds + 1/point2odds))
-                  
+            print("Total market opportunity is " + str(1/point1odds + 1/point2odds))
             
+        print("")
