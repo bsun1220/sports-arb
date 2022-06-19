@@ -1,7 +1,7 @@
 from fuzzywuzzy import fuzz
 
 
-def compiled(caesar, draftkings, fandual, pointsbet):
+def match_source(caesar, draftkings, fandual, pointsbet):
     
     data = [caesar, draftkings, fandual, pointsbet]
     ref = ["caesar", "draftkings", "fandual", "pointsbet"]
