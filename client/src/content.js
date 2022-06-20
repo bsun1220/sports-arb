@@ -7,5 +7,6 @@ export default function Content(){
         <h1>Opportunities of The Day</h1>
         <hr/>
         <Card/>
+        <Card/>
     </div>)
 }
