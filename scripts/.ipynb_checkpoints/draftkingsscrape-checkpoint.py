@@ -20,17 +20,26 @@ def get_data():
         button.click()
         time.sleep(4)
     
-    events = driver.find_elements_by_xpath('//tbody[@class="sportsbook-table__body"]')
-    event_list = []
-    
+    events = driver.find_elements_by_xpath('//tr')
+    prev = []
+    index = 0
+    lst = []
     for event in events:
-        lst = event.text.split("\n")
-        if (len(lst) == 17):
-            del lst[2]
-            del lst[10]
-        event_list.append(lst)
-    
-    return event_list
+        data = event.text.split("\n")
+        if len(data) == 4:
+            continue
+        if index % 2 == 0:
+            if len(data) == 9:
+                del data[2]
+            prev = data
+        elif index % 2 == 1:
+            if len(data) == 8:
+                del data[1]
+            data = prev + data
+            lst.append(data)
+        index +=1
+
+    return lst
 
 def transform_data(data):
     clean_list = []

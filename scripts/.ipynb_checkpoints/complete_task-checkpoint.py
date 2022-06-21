@@ -15,6 +15,9 @@ def find():
     data3 = fandual()
     data4 = pointsbet()
     matched = match_source(copy.deepcopy(data1),copy.deepcopy(data2),copy.deepcopy(data3),copy.deepcopy(data4))
-    sort = sort_data(matched)
-    return sort
+    data = sort_data(matched)
+    url = "https://sportsarb.herokuapp.com/sports"
+    obj = {"data":data}
+    x = requests.put(url, json = obj)
+    print(x.text)
     

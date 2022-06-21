@@ -5,7 +5,7 @@
     margin-bottom:20px;
     border-style:solid;
     height:fit-content;
-    width:30rem;
+    width:min(30rem, 60vw);
     text-align:center;
     display:flex;
     flex-direction:column;
