@@ -1,1 +1,1 @@
-Making money
+This project utilizes webscraping of 4 different webites (Caesar's, Fanduel, Draftkings, and PointsBet) to sports betting arbitrage opportunities in basketball-related bets. The algorithm uses fuzzy-wuzzy string matching to match teams on different websites and then calculates the necessary bet sizing to achieve arbitrage profit. From there, this project stores the arbitrage opportunities in a database where the backend of the web application is connected to.
